@@ -2,6 +2,8 @@ from random import randint
 
 # List of play options
 options = ["Paper", "Rock", "Scissors"]
+# Cases in which the player wins stored in a list of tuples (player, computer).
+player_wins = [("Paper", "Rock"), ("Rock", "Scissors"), ("Scissors", "Paper")]
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -17,10 +19,12 @@ if __name__ == '__main__':
                     inner_flag = False  # Exit the inner loop
                 elif player in options:
                     computer = options[randint(0, 2)]   # Random option of play for the computer.
+                    selection = (player, computer)
                     print ("The computer selected", computer)
+                    print ("You selected", player)
                     if player == computer:
                         print("Tie !!\n")
-                    elif (player == "Paper" and computer == "Rock") or (player == "Rock" and computer == "Scissors") or (player == "Scissors" and computer == "Paper"):
+                    elif selection in player_wins:
                         print("You won !!\n")
                     else:
                         print("You lost !!\n")
